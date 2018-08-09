@@ -1,0 +1,79 @@
+<%- include('../_layouts/adminHeader') %>
+
+  <br>
+
+  <div class="row">
+  
+    <div class="form-group">
+
+        <a class="btn btn-dark mt-4 mr-3 ml-3" href="/admin/blog-posts/create">Click to create a post</a>
+
+    </div>
+  
+  </div>
+
+  <br>
+
+  <h1 class="mb-3">All posts</h1>
+
+  <br>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% posts.forEach(function(post) { %>
+
+        <tr>
+          <td>
+            <%= post.id %>
+          </td>
+          <td>
+            <% if (post.faker == 'YES') { %>
+
+            <img height="50" class="img-responsive" src="<%= post.image %>" alt="">
+
+            <% } else { %>
+
+            <img height="50" class="img-responsive" src="/blog-posts-images/<%= post.image %>" alt="">
+
+            <% } %>
+          </td>
+          <td>
+            <%= post.title %>
+          </td>
+          <td>
+            <% let date = post.date %>
+              <% let generateD = generateDate(date, 'MMM Do YYYY') %>
+                <%= generateD %>
+          </td>
+          <td>
+            <a href="/admin/blog-posts/edit/<%= post.id %>" class="btn btn-info">Edit</a>
+          </td>
+          <td>
+            <form action="/admin/blog-posts/delete/<%= post.id %>?_method=delete" method="post">
+
+              <button type="submit" class="btn btn-danger">Delete</button>
+
+            </form>
+          </td>
+
+
+        </tr>
+
+        <% } ) %>
+
+    </tbody>
+  </table>
+
+
+  <%- include('../_layouts/adminFooter') %>

@@ -1,0 +1,77 @@
+<% include  _layouts/header %>
+  <div class="row">
+    <h1 class="page-header mt-3">
+      <%= product.title %>
+    </h1>
+
+  </div>
+  <hr>
+  <br>
+
+  <div class="row">
+
+    <div class="col-xs-12 col-md-5">
+      <img class="spi" src="/product-images/<%= product.id %>/<%= product.image %>" alt="">
+      <br>
+    </div>
+    <div class="col-xs-12 col-md-7">
+      <p>
+        <%- product.description %>
+      </p>
+
+      <p>
+        €
+        <%= parseFloat(product.price).toFixed(2) %>
+      </p>
+
+
+      <% if (loggedIn) { %>
+
+        <% if (availability == 'ON' && product.quantity > 5) { %>
+
+          <p>
+            <a class="btn btn-light" href="/cart/add/<%= product.slug %>">Add to cart</a>
+          </p>
+
+          <% } else if (availability == 'OFF') { %>
+
+            <p class="alert alert-warning">Product is not available</p>
+
+            <% } else if (product.quantity < 6 && product.quantity > 0 ) { %>
+
+            <p class="alert alert-warning">Only <%= product.quantity %> pieces left</p>
+
+              <p>
+                <a class="btn btn-light" href="/cart/add/<%= product.slug %>">Add to cart</a>
+              </p>
+
+              <% } else { %>
+
+              <p class="alert alert-warning">Product is not in stock</p>
+
+              <% } %>
+
+              <% } else { %>
+
+                <p class="alert alert-warning">You must be logged in to purchase items</p>
+
+                <% } %>
+
+
+    </div>
+    <div class="col-xs-12">
+      <ul class="gallery">
+        <% galleryImages.forEach(function(image) { %>
+          <% if (image != 'thumbs') { %>
+            <li>
+              <a data-fancybox="gallery" href="/product-images/<%= product.id %>/gallery/<%= image %>">
+                <img src="/product-images/<%= product.id %>/gallery/thumbs/<%= image %>" alt="">
+              </a>
+            </li>
+            <% } %>
+              <% } ); %>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <% include  _layouts/footer %>

@@ -1,0 +1,82 @@
+<% include  _layouts/header %>
+  <% if (typeof cart !== 'undefined') { %>
+
+    <h1 class="page-title mt-4">My Cart</h1>
+    <br>
+    <table class="table mt-4">
+      <tr>
+        <th>Image</th>
+        <th>Titlte</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th></th>
+        <th>Subtotal</th>
+      </tr>
+
+      <% let total = 0; %>
+        <% cart.forEach(function(product) { %>
+          <% let subTotal = parseFloat(product.quantity * product.price).toFixed(2) %>
+            <% total+= +subTotal %>
+              <tr>
+                <td>
+                  <img class="cpi" src="<%= product.image %>" alt="">
+                </td>
+                <td>
+                  <%= product.title %>
+                </td>
+                <td>
+                  €
+                  <%= product.price %>
+                </td>
+                <td>
+                  <%= product.quantity %>
+                </td>
+                <td>
+                  <a class="badge badge-primary p-2" href="/cart/update/<%= product.title %>?action=add">+</a>&nbsp;
+
+                  <a class="badge badge-primary p-2" href="/cart/update/<%= product.title %>?action=remove">-</a>&nbsp;
+
+                  <a class="badge badge-warning p-2" href="/cart/update/<%= product.title %>?action=clear">Clear</a>&nbsp;
+                </td>
+
+                <td>
+                  €
+                  <%= subTotal %>
+                </td>
+              </tr>
+              <% } ); %>
+
+                <tr>
+                  <td colspan="6" align="right">
+                    <b>Total: $
+                      <%= parseFloat(total).toFixed(2) %>
+                    </b>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="5" align="right">
+                    <a class="btn btn-danger clear-cart" href="/cart/clear">Clear cart</a>
+                  </td>
+                  <td colspan="5" align="right">
+                    <form action="/cart/buy-now" method="post">
+                      <button class="btn btn-dark buy-now" type="submit">Buy now</button>
+                    </form>
+                  </td>
+                </tr>
+    </table>
+
+    <% } else { %>
+      <h3 class="text-center">Your cart is empty</h3>
+      <% } %>
+
+        <script>
+          $(function () {
+            $('a.clear-cart').on('click', () => {
+              if (!confirm('Confirm clear cart')) {
+                return false;
+              }
+            });
+          });
+
+        </script>
+        <% include  _layouts/footer %>
