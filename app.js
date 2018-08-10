@@ -10,10 +10,6 @@ const passport = require('passport');
 const moment = require('moment');
 const cookieParser = require('cookie-parser');
 
-// todo1: na kanw th leitourgia twn diathesimwn pros agora proiontwn perisotero dinamikh. me tis agores proiontwn apo tous xristes na mionete h timh twn apothematwn twn proionton kai otan pigenei sto 0 to proion na einai mh diathesimo
-// todo2: na kanw deploy to app
-// todo3: na eksigisw me logia ta simantikotera features kai na diksw analoga komatia kodika
-
 const { database } = require('./config/database');
 
 // init app
@@ -180,7 +176,7 @@ app.use('/contact', contact);
 app.use('/popular-products', popularProducts);
 
 // start the server
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
