@@ -1,3 +1,43 @@
+/* .pa {
+  display: inline-block;
+  height: 160px;
+}
+.productImage {
+  width: 150px;
+}
+
+.p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.spi {
+  display: block;
+  width: 100%;
+}
+
+ul.gallery li {
+  display: inline-block;
+  margin: 20px;
+  list-style: none;
+}
+
+.cpi {
+  width: 100px;
+}
+
+.align-middle td {
+  vertical-align: middle !important;
+}
+
+.alert-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+} */
+
+/* --- NEW DESIGN --- */
+
 .pa {
   display: inline-block;
   height: 160px;
@@ -34,4 +74,123 @@ ul.gallery li {
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
+}
+
+/* --- NEW STYLES --- */
+body {
+  overflow-x: hidden;
+}
+
+.navbar .nav-link {
+  font-size: 18px;
+  text-transform: uppercase;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
+
+.navbar .nav-item.active {
+  font-weight: bold;
+  border-left: #444 3px solid;
+}
+
+.carousel-item {
+  height: 450px;
+}
+
+.carousel-image-1 {
+  background: url("/images/3ddesign.jpg");
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: difference;
+}
+
+.carousel-image-2 {
+  background: url("/images/welcome2.jpg");
+  background-position: 135px;
+  background-repeat: no-repeat;
+}
+
+.carousel-image-3 {
+  background: url("/images/social-media.jpg");
+  background-color: #f2f2f2;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 250px;
+}
+
+.fa {
+  font-size: 55px;
+}
+
+#home-heading {
+  position: relative;
+  min-height: 200px;
+  background: url("/images/lights.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+}
+
+.dark-overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#video-play {
+  position: relative;
+  min-height: 200px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: 0 -300px;
+  text-align: center;
+  color: #fff;
+}
+#video-play a {
+  color: #fff;
+}
+
+footer#main-footer {
+  background: #000;
+  color: #fff;
+}
+
+#page-header {
+  background: url("/images/header.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #000;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px;
+}
+
+#faq .card {
+  border: #444;
+}
+#faq .card a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#faq .card-body,
+#faq .card-header {
+  background: #333;
+}
+
+.active-orange-3 input[type="text"] {
+  border: 1px solid #ffa500;
+  box-shadow: 0 0 0 1px #ffa500;
+}
+
+#gallery {
+  background: url("/images/image2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
