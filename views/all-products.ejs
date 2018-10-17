@@ -1,18 +1,22 @@
 <% include  _layouts/shopHeader %>
+  <div class="row">
+    <div class="card mb-4 mt-4">
+      <form action="/products" method="get">
+      <h5 class="card-header">Product Search</h5>
+      <div class="card-body">
+        <div class="input-group">
+          <input type="text" name="search" class="form-control" placeholder="Search for..."/>
+          <span class="input-group-btn">
+            <button class="btn btn-dark" type="submit" value="Search">Go!</button>
+          </span>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
   <div class="row products">
     <div class="col-xs-12"> <%# -- %>
       <div class="card my-4">
-      <form action="/products" method="get">
-        <h5 class="card-header">Product Search</h5>
-        <div class="card-body">
-          <div class="input-group">
-            <input type="text" name="search" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-              <button class="btn btn-dark" type="submit" value="Search">Go!</button>
-            </span>
-          </div>
-        </div>
-        </form>
       </div>
     </div> <%# -- %>
 

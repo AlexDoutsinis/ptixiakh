@@ -22,61 +22,84 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Ecommerce with Nodejs</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-expand-md navbar-light bg-white">
+<div class="container">
+    <a class="navbar-brand" href="/"><img src="/images/logo_size.jpg"></a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navNavbar"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
+      <ul class="navbar-nav ml-auto">
         <% pages.forEach(function(page) { %>
           <% if (page.slug == 'home') { %>
-            <a class="nav-item nav-link" href="/">
-              <%= page.title %>
-                <a/>
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+            <%= page.title %>
+              <a/>
+          </li>
+            
                 <% } else { %>
-                  <a class="nav-item nav-link" href="/nav/<%= page.slug %>">
-                    <%= page.title %>
-                  </a>
+                <li class="nav-item">
+                  <a class="nav-link" href="/nav/<%= page.slug %>">
+                  <%= page.title %>
+                </a>
+                </li>
                   <% } %>
                     <% } )%>
 
-                    <a class="nav-item nav-link" href="/products">Shop</a>
-                    <a class="nav-item nav-link" href="/blog">Blog</a>
-                    <a class="nav-item nav-link" href="/contact">Contact us</a>
-                      <a style="color: green;" class="nav-item nav-link" href="/cart/checkout">My cart(
-                        <% if (typeof cart !== 'undefined') { %>
-                          <%= cart.length %>
-                            <% } else { %>
-                              empty
-                              <% } %>
-                                )
-                      </a>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/products">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/contact">Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/cart/checkout">My cart(
+                      <% if (typeof cart !== 'undefined') { %>
+                        <%= cart.length %>
+                          <% } else { %>
+                            empty
+                            <% } %>
+                              )
+                    </a>
+                    </li>
+                    
+                    
                       <% if (user) { %>
 
-                        <span class="nav-item nav-link" style="color: green; cursor: pointer;">Welcome
-                          <%= user.name %>
-                        </span>
-
-                        <a class="nav-item nav-link" style="color: green;" href="/users/logout">Logout</a>
+                      <li class="nav-item">
+                        <a class="nav-link">Welcome
+                            <%= user.name %>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/users/logout">Logout</a>
+                      </li>
+                        
 
                         <% } else { %>
 
-                          <a class="nav-item nav-link" style="color: green;" href="/users/register">Register</a>
-
-                          <a class="nav-item nav-link" style="color: green;" href="/users/login">Log in</a>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/users/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/users/login">Log in</a>
+                        </li>
 
                           <% } %>
 
                             <% if (user && user.admin == 1) { %>
 
-                              <a class="nav-item nav-link" style="color: green;" href="/admin/pages">Dashboard</a>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/admin/pages">Dashboard</a>
+                            </li>
 
                               <% } %>
 
 
-      </div>
+      </ul>
+    </div>
     </div>
   </nav>
 
