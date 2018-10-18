@@ -12,6 +12,7 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
 
@@ -23,7 +24,7 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-light bg-white">
-<div class="container">
+<div class="navbar-nav">
     <a class="navbar-brand" href="/"><img src="/images/logo_size.jpg"></a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navNavbar"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -123,39 +124,37 @@
                 <div class="row">
 
                   <div class="col-xs-12 col-md-3">
-                    <h3 class="mb-4 mt-4">Categories</h3>
-                    <ul class="list-group">
-
-                      <li class="list-group-item list-group-item-primary">
-                        <a href="/products">All products</a>
-                      </li>
-
-                      <% categories.forEach(function(cat) { %>
-                        <li class="list-group-item">
-                          <a href="/products/<%= cat.slug %>?currentCat=<%= cat.slug %>">
-                            <%= cat.title %>
-                          </a>
-                        </li>
+                  <h3 class="mb-4 mt-4">Categories</h3>
+                    <div class="card bg-light mb-3">
+                      <div class="card-header bg-primary text-white text-uppercase"><i class="fas fa-list"></i></div>
+                      <ul class="list-group category_block">
+                        <li class="list-group-item"><a href="/products">All products</a></li>
+                        <% categories.forEach(function(cat) { %>
+                          <li class="list-group-item">
+                            <a href="/products/<%= cat.slug %>?currentCat=<%= cat.slug %>">
+                              <%= cat.title %>
+                            </a>
+                          </li>
                         <% } ) %>
-
                         <li class="list-group-item">
-                        <a href="/popular-products">Popular Products</a>
-                      </li>
+                          <a href="/popular-products">Popular Products</a>
+                        </li>
+                      </ul>
+                      
 
-                    </ul>
+                      
 
-                    <br>
-                    <hr>
+                    </div>
 
                     <% if (user && user.admin == 0) { %>
 
                       <h5 style="line-height: 30px;" class="pt-2 pr-3 pb-4">Upload the item
-                        <br> you want to print</h5>
+                        <br/> you want to print</h5>
 
                       <form action="/products/costum-orders" method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
-                          <input placeholder="Image" type="file" class="form-control-file" name="image" id="img">
+                          <input placeholder="Image" type="file" class="form-control-file" name="image" id="img"/>
                         </div>
 
                         <button class="btn btn-light mt-3">Submit</button>
@@ -171,6 +170,14 @@
                         <p class="alert alert-info">Log in to order costum item</p>
 
                         <% } %>
+
+                    
+
+                    
+
+                      
+
+                      
 
                   </div>
 

@@ -43,7 +43,8 @@ ul.gallery li {
   height: 160px;
 }
 .productImage {
-  width: 150px;
+  width: 100%;
+  height: 100%;
 }
 
 .p {

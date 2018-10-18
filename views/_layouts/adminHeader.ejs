@@ -11,28 +11,40 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
     <link rel="stylesheet" href="/css/admin-style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="/" target="_blank">Ecommerce with Nodejs</a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-  aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="navbar-nav">
-    <a class="nav-item nav-link" href="/admin/pages">Mini Pages</a>
-    <a class="nav-item nav-link" href="/admin/categories">Categories</a>
-    <a class="nav-item nav-link" href="/admin/products">Products</a>
-    <a class="nav-item nav-link" href="/admin/blog-posts">Blog Posts</a>
-    <a class="nav-item nav-link" href="/admin/costum-orders">Orders in wating</a>
-    <a class="nav-item nav-link" style="color: green;" href="/users/logout">Logout</a>
+    <a class="navbar-brand" href="/" target="_blank"><img src="/images/logo_size.jpg"></a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navNavbar"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/pages">Mini Pages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/categories">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/blog-posts">Blog Posts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/costum-orders">Orders in wating</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" style="color: green;" href="/users/logout">Logout</a>
+          </li>
+        </ul>
+    </div>
   </div>
-</div>
 </nav>
 
   <div class="container">
