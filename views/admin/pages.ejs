@@ -20,13 +20,11 @@
           <td>
             <a class="badge badge-primary p-2" href="/admin/pages/edit-page/<%= page._id %>">Edit</a>
           </td>
-          <% if (page.slug == 'home') { %>
-            <td></td>
-            <% } else { %>
+          
               <td>
                 <a class="confirmDeletion badge badge-warning p-2" href="/admin/pages/delete-page/<%= page._id %>">Delete</a>
               </td>
-              <% } %>
+              
         </tr>
         <% }); %>
     </tbody>

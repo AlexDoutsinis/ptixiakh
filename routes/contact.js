@@ -1,16 +1,27 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const nodeMailer = require('nodemailer');
+const nodeMailer = require("nodemailer");
 
-router.get('/', (req, res) => {
-  res.render('contact');
-})
+router.get("/", (req, res) => {
+  res.render("contact");
+});
 
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
+  req.checkBody("name", "Name is required").notEmpty();
+  req.checkBody("email", "Email is required").notEmpty();
+  req.checkBody("msg", "Message is required").notEmpty();
 
-  const output =
-    `
+  let errors = req.validationErrors();
+
+  if (errors) {
+    return res.render("contact", {
+      errors,
+      user: null
+    });
+  }
+
+  const output = `
   <p>New Contact Request</p>
   <h3>Contact Details</h3>
   <ul>
@@ -22,12 +33,12 @@ router.post('/', (req, res) => {
   `;
 
   let transporter = nodeMailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: "smtp.gmail.com",
     port: 465,
     secure: true,
     auth: {
-      user: 'alxdosin@gmail.com',
-      pass: 'alexdosin21aazz'
+      user: "alxdosin@gmail.com",
+      pass: "alexdosin21aazz"
     },
     tls: {
       rejectUnauthorized: false
@@ -36,9 +47,9 @@ router.post('/', (req, res) => {
 
   let mailOptions = {
     from: '"Nodemailer" <alxdosin@gmail.com>', // sender address
-    to: 'Alxdoutsinis@gmail.com', // list of receivers
-    subject: 'Nodemailer Contact Request', // Subject line
-    text: 'Hello', // plain text body
+    to: "Alxdoutsinis@gmail.com", // list of receivers
+    subject: "Nodemailer Contact Request", // Subject line
+    text: "Hello", // plain text body
     html: output // html body
   };
 
@@ -46,11 +57,9 @@ router.post('/', (req, res) => {
     if (error) {
       return console.log(error);
     }
-    console.log('Message %s sent: %s', info.messageId, info.response);
-    res.json({ complete: true });
+    console.log("Message %s sent: %s", info.messageId, info.response);
+    res.redirect("back");
   });
-
-})
-
+});
 
 module.exports = router;
