@@ -30,7 +30,7 @@
         <% if (availability == 'ON' && product.quantity > 5) { %>
 
           <p>
-            <a class="btn btn-light" href="/cart/add/<%= product.slug %>">Add to cart</a>
+            <a class="btn btn-success" href="/cart/add/<%= product.slug %>">Add to cart</a>
           </p>
 
           <% } else if (availability == 'OFF') { %>
@@ -42,7 +42,7 @@
             <p class="alert alert-warning">Only <%= product.quantity %> pieces left</p>
 
               <p>
-                <a class="btn btn-light" href="/cart/add/<%= product.slug %>">Add to cart</a>
+                <a class="btn btn-success" href="/cart/add/<%= product.slug %>">Add to cart</a>
               </p>
 
               <% } else { %>

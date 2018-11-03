@@ -1,0 +1,26 @@
+<%- include('../_layouts/adminHeader') %>
+
+<h2 class="page-title mt-4">Newsletters list</h2>
+
+<table class="table table-hover mt-4">
+    <thead>
+      <tr class="home">
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach(function(user) { %>
+        <tr>
+          <td>
+            <%= user.name %>
+          </td>
+          <td>
+            <%= user.email %>
+          </td>   
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+
+<%- include('../_layouts/adminFooter') %>

@@ -124,15 +124,26 @@
   <!-- NEWSLETTER SECTION -->
   <section id="newsletter" class="text-center p-5 bg-dark text-white">
     <div class="container">
+
+    <%- messages('messages', locals) %>
+
+      <% if (errors) { %>
+          <% errors.forEach(function(error) { %>
+            <div class="alert alert-danger">
+              <%= error.msg %>
+            </div>
+            <% }); %>
+          <%  } %>
+
       <div class="row">
         <div class="col">
           <h1>Signup For Our Newsletter</h1>
           <p>Signup now to be one of the first who will learn about our news and discounts. No spam. We promise.</p>
-          <form class="form-inline justify-content-center">
+          <form class="form-inline justify-content-center" method="post" action="/">
             <label class="sr-only" for="name">Name</label>
-            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Enter Name">
+            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Enter Name" name="name"/>
             <label class="sr-only" for="email">Email</label>
-            <input type="email" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Enter Email">
+            <input type="email" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Enter Email" name="email"/>
             <button class="btn-primary" type="submit">Submit</button>
           </form>
         </div>
