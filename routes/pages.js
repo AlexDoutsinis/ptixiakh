@@ -12,10 +12,12 @@ router.get("/:slug", (req, res) => {
     if (!page) {
       res.send("Page could not be found");
     } else {
-      res.render("index", {
-        title: page.title ? page.title : "",
-        content: page.content ? page.content : "test"
-      });
+      if (page.title) {
+        res.render("index", {
+          title: page.title,
+          content: page.content
+        });
+      }
     }
   });
 });
