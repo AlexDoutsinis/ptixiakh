@@ -195,3 +195,13 @@ footer#main-footer {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18vh;
+  background-image: url("../images//hero.png");
+  background-size: cover;
+  background-position: center;
+}
