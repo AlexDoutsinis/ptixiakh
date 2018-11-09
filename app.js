@@ -170,6 +170,7 @@ const contact = require("./routes/contact.js");
 const popularProducts = require("./routes/popular-products");
 
 // load routes
+// comment
 app.use("/", home);
 app.use("/nav", pages);
 app.use("/admin/pages", adminPages);
