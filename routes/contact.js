@@ -58,6 +58,7 @@ router.post("/", (req, res) => {
       return console.log(error);
     }
     console.log("Message %s sent: %s", info.messageId, info.response);
+    req.flash("success", "Your message has been sent");
     res.redirect("back");
   });
 });

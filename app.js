@@ -149,6 +149,8 @@ app.get("*", (req, res, next) => {
 
   // gia to search sti kathe katigoria proionton
   res.locals.currentCat = req.query.currentCat;
+  res.locals.cat = null;
+  res.locals.cate = null;
 
   next();
 });
@@ -168,6 +170,7 @@ const cart = require("./routes/cart.js");
 const users = require("./routes/users.js");
 const contact = require("./routes/contact.js");
 const popularProducts = require("./routes/popular-products");
+const sortByPrice = require("./routes/sortByPrice");
 
 // load routes
 // comment
@@ -185,6 +188,7 @@ app.use("/cart", cart);
 app.use("/users", users);
 app.use("/contact", contact);
 app.use("/popular-products", popularProducts);
+app.use("/sort", sortByPrice);
 
 // start the server
 const port = process.env.PORT || 3000;

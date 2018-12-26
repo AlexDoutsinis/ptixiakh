@@ -58,6 +58,12 @@ router.get("/", (req, res) => {
 router.get("/:category", (req, res) => {
   // console.log(req.query.currentCat);
 
+  //console.log(req.url);
+
+  // const catIndex = req.url.indexOf("?");
+  // const cate = req.url.slice(1, catIndex);
+  //console.log(cate);
+
   let categorySlug = req.params.category;
 
   if (req.query.search) {
@@ -97,6 +103,42 @@ router.get("/:category", (req, res) => {
       });
     });
   }
+});
+
+// get req to sort products by ascending for each category - NOT IMPLEMENT YET (UI MISSING)
+router.get("/asc/:category", async (req, res) => {
+  let slug = req.params.category;
+
+  const catIndex = req.url.lastIndexOf("/");
+  const cat = req.url.slice(catIndex + 1);
+
+  const category = await Category.findOne({ slug });
+
+  const products = await Product.find({ category: slug }).sort({ price: 1 });
+
+  res.render("categories-products", {
+    title: `Ascending Order for ${category.title} category`,
+    products,
+    cat
+  });
+});
+
+// get req to sort products by descending for each category - NOT IMPLEMENT YET (UI MISSING)
+router.get("/des/:category", async (req, res) => {
+  const slug = req.params.category;
+
+  const catIndex = req.url.lastIndexOf("/");
+  const cat = req.url.slice(catIndex + 1);
+
+  const category = await Category.findOne({ slug });
+
+  const products = await Product.find({ category: slug }).sort({ price: -1 });
+
+  res.render("categories-products", {
+    title: `Descending Order for ${category.title} category`,
+    products,
+    cat
+  });
 });
 
 // get req product details

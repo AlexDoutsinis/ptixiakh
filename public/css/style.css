@@ -205,3 +205,7 @@ footer#main-footer {
   background-size: cover;
   background-position: center;
 }
+
+a.nav-link {
+  font-size: 15px !important;
+}

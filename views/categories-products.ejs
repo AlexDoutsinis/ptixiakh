@@ -20,7 +20,14 @@
           </div>
         </div>
       </form>
-    </div>
+      </div>
+      <div class="card mb-4 mt-4 ml-5">
+      <h5 class="card-header">Sort products by price</h5>
+      <div class="card-body">
+        <a href="/products/asc/<%= currentCat || cat %>" class="btn btn-dark">Ascending</a>
+        <a href="/products/des/<%= currentCat || cat %>" class="btn btn-dark">Descending</a>
+      </div>
+      </div>
   </div>
   
   <div class="row products">
@@ -59,9 +66,11 @@
 
   <script>
 
+    
     let savedCurrentCat = $('#savedCat').val();
 
     $('#formAct').attr('action', savedCurrentCat);
+    
 
     console.log(savedCurrentCat);
 

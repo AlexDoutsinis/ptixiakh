@@ -78,7 +78,7 @@ router.get("/checkout", isUser, (req, res) => {
 });
 
 // get req update product
-router.get("/update/:product", isUser, (req, res) => {
+router.get("/update/:product", isUser, async (req, res) => {
   let slug = req.params.product;
 
   let cart = req.session.cart;
@@ -86,9 +86,12 @@ router.get("/update/:product", isUser, (req, res) => {
 
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].title == slug) {
+      const product = await Product.findOne({ slug });
       switch (action) {
         case "add":
-          cart[i].quantity++;
+          cart[i].quantity + 1 <= product.quantity
+            ? cart[i].quantity++
+            : cart[i].quantity;
           break;
         case "remove":
           cart[i].quantity--;
@@ -124,18 +127,32 @@ router.get("/clear", isUser, (req, res) => {
 });
 
 // post req buy now
-router.post("/buy-now", isUser, async (req, res) => {
-  const slugs = req.session.cart.map(n => n.title);
+router.post("/buy-now", isUser, (req, res) => {
+  // const slugs = req.session.cart.map(n => n.title);
 
   try {
-    const result = await Product.update(
-      {
-        slug: { $in: slugs }
-      },
-      {
-        $inc: { sales: 1, quantity: -1 }
-      }
-    );
+    req.session.cart.forEach(async item => {
+      await Product.update(
+        {
+          slug: item.title
+        },
+        {
+          $inc: { sales: 1, quantity: -item.quantity }
+        }
+      );
+    });
+    // const { quantity: qu } = req.session.cart;
+    // console.log(req.session.cart);
+    // console.log(slugs);
+    // await Product.update(
+    //   {
+    //     slug: { $in: slugs }
+    //   },
+    //   {
+    //     $inc: { sales: 1, quantity: -1 }
+    //   },
+    //   { multi: true }
+    // );
 
     delete req.session.cart;
 
