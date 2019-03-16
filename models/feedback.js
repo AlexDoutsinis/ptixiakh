@@ -1,0 +1,15 @@
+const mongoose = require("mongoose");
+
+const FeedbackSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+
+  body: {
+    type: String,
+    required: true
+  }
+});
+
+const Feedback = (module.exports = mongoose.model("feedback", FeedbackSchema));
