@@ -1,0 +1,52 @@
+<%- include('../_layouts/adminHeader') %>
+
+<br />
+
+<div class="container">
+  <h1 class="mb-3">Reviews</h1>
+  <br />
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Approve</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% reviews.forEach(function(review) { %>
+
+      <tr>
+        <td>
+          <%= review.name %>
+        </td>
+
+        <td>
+          <% let date = review.date %> <%= generateDate(date, 'MMM Do YYYY') %>
+        </td>
+        <td>
+          <a
+            href="/admin/blog-posts/approve/<%= review.id %>"
+            class="btn btn-info"
+            >Approve</a
+          >
+        </td>
+        <td>
+          <form
+            action="/admin/feedback/delete/<%= review.id %>?_method=delete"
+            method="post"
+          >
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+
+      <% } ) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../_layouts/adminFooter') %>

@@ -1,11 +1,13 @@
 <%- include('../_layouts/adminHeader') %>
+<div class="container">
   <h2 class="page-title mt-4">Products</h2>
-  <a href="/admin/products/add-product" class="btn btn-dark mt-4 mb-3">Add a new product</a>
+  <a href="/admin/products/add-product" class="btn btn-dark mt-4 mb-3"
+    >Add a new product</a
+  >
 
   <% if (count > 0) { %>
 
   <table class="table table-hover mt-4">
-
     <thead>
       <tr class="home">
         <th>Product</th>
@@ -19,43 +21,56 @@
     </thead>
     <tbody>
       <% products.forEach(function(product) { %>
-        <tr>
-          <td>
-            <%= product.title %>
-          </td>
-          <td>
-            €<%= parseFloat(product.price).toFixed(2) %>
-          </td>
-          <td>
-            <%= product.category %>
-          </td>
-          <td>
-            <% if(product.image == '') { %>
-              <img class="imageSize" src="/images/noimage.png" alt="">
+      <tr>
+        <td>
+          <%= product.title %>
+        </td>
+        <td>
+          €<%= parseFloat(product.price).toFixed(2) %>
+        </td>
+        <td>
+          <%= product.category %>
+        </td>
+        <td>
+          <% if(product.image == '') { %>
+          <img class="imageSize" src="/images/noimage.png" alt="" />
 
-            <% } else { %>
+          <% } else { %>
 
-            <img class="imageSize" src="/product-images/<%= product._id %>/<%= product.image %>" alt="">
-            <% } %>
-          </td>
-          <td>
-            <%= product.availability %>
-          </td>
-          <td>
-            <a class="badge badge-primary p-2" href="/admin/products/edit-product/<%= product._id %>">Edit</a>
-          </td>
-              <td>
-                <a class="confirmDeletion badge badge-warning p-2" href="/admin/products/delete-product/<%= product._id %>">Delete</a>
-              </td>
-        </tr>
-        <% }); %>
+          <img
+            class="imageSize"
+            src="/product-images/<%= product._id %>/<%= product.image %>"
+            alt=""
+          />
+          <% } %>
+        </td>
+        <td>
+          <%= product.availability %>
+        </td>
+        <td>
+          <a
+            class="badge badge-primary p-2"
+            href="/admin/products/edit-product/<%= product._id %>"
+            >Edit</a
+          >
+        </td>
+        <td>
+          <a
+            class="confirmDeletion badge badge-warning p-2"
+            href="/admin/products/delete-product/<%= product._id %>"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      <% }); %>
     </tbody>
   </table>
 
   <% } else { %>
 
-    <h3 class=text-center>There are no products</h3>
+  <h3 class="text-center">There are no products</h3>
 
   <% } %>
+</div>
 
-  <%- include('../_layouts/adminFooter') %>
+<%- include('../_layouts/adminFooter') %>

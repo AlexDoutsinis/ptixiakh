@@ -1,29 +1,50 @@
 <%- include('../_layouts/adminHeader') %>
 
+<div class="container">
   <h1>Create Posts</h1>
-  <a href="/admin/blog-posts" class="btn btn-dark mt-4 mb-4">Back to all posts</a>
+  <a href="/admin/blog-posts" class="btn btn-dark mt-4 mb-4"
+    >Back to all posts</a
+  >
 
-  <form action="/admin/blog-posts/create" method="post" enctype="multipart/form-data">
-
+  <form
+    action="/admin/blog-posts/create"
+    method="post"
+    enctype="multipart/form-data"
+  >
     <div class="form-group">
       <label for="title">Ttitle</label>
-      <input name="title" type="text" class="form-control" id="title" placeholder="Enter title" value="<%= title %>">
+      <input
+        name="title"
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="Enter title"
+        value="<%= title %>"
+      />
     </div>
 
     <div class="form-group">
       <label for="file">Image Upload</label>
-      <input name="image" type="file" class="form-control">
+      <input name="image" type="file" class="form-control" />
     </div>
 
     <div class="form-group">
       <label for="body">Body</label>
-      <textarea name="body" id="ta" cols="30" rows="10" class="form-control" id="body" placeholder="Enter Desctiption"><%= body %></textarea>
+      <textarea
+        name="body"
+        id="ta"
+        cols="30"
+        rows="10"
+        class="form-control"
+        id="body"
+        placeholder="Enter Desctiption"
+      >
+<%= body %></textarea
+      >
     </div>
 
     <button type="submit" class="btn btn-dark">Submit</button>
-
-
   </form>
+</div>
 
-
-  <%- include('../_layouts/adminFooter') %>
+<%- include('../_layouts/adminFooter') %>

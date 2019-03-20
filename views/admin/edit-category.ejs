@@ -1,13 +1,25 @@
 <%- include('../_layouts/adminHeader') %>
+<div class="container">
   <h2 class="page-title mt-4">Edit category</h2>
-  <a href="/admin/categories" class="btn btn-dark mt-4 mb-4">Back to all categories</a>
-  <form action="/admin/categories/edit-category/<%= id %>?_method=PUT" method="post">
+  <a href="/admin/categories" class="btn btn-dark mt-4 mb-4"
+    >Back to all categories</a
+  >
+  <form
+    action="/admin/categories/edit-category/<%= id %>?_method=PUT"
+    method="post"
+  >
     <div class="form-group">
       <label for="">Titlte</label>
-      <input placeholder="Titlte" type="text" class="form-control" name="title" value="<%= title %>">
+      <input
+        placeholder="Titlte"
+        type="text"
+        class="form-control"
+        name="title"
+        value="<%= title %>"
+      />
     </div>
 
     <button class="btn btn-dark">Submit</button>
-
   </form>
-  <%- include('../_layouts/adminFooter') %>
+</div>
+<%- include('../_layouts/adminFooter') %>

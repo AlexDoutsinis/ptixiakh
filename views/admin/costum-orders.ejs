@@ -1,53 +1,61 @@
 <%- include('../_layouts/adminHeader') %>
 
-<br>
-
-<h1 class="mb-3 mt-3">Orders</h1>
-
-<br>
-
+<br />
 <% if (count > 0) { %>
+<div class="container">
+  <h1 class="mb-3 mt-3">Orders</h1>
 
-<table class="table table-bordered">
-<thead>
-    <tr class="home">
-      <th>Id</th>
-      <th>Customer name</th>
-      <th>Product to print</th>
-      <th>Date</th>
-      <th>Action</th>
-    </tr>
-</thead>
-<tbody>
-<% orders.forEach(function(order) { %>
+  <br />
 
-  <tr>
-    <td>
-      <%= order._id %>
-    </td>
-    <td>
-      <%= order.costumerName %>
-    </td>
-    <td>
-    <img class="imageSize" src="/costum-orders/<%= order.productImage %>" alt="">
-    </td>
-    <td>
-      <% let d = 'Ordered on ' + generateDate(order.date, 'MMM Do YYYY') %>
-      <%= d %>
-    </td>
-    <td>
-      <a class="confirmDeletion badge badge-success p-2" href="/admin/costum-orders/delete/<%= order.id %>">Done</a>
-    </td>
-  </tr>
-  
-<% }) %>
-</tbody>
-</table>
+  <table class="table table-bordered">
+    <thead>
+      <tr class="home">
+        <th>Id</th>
+        <th>Customer name</th>
+        <th>Product to print</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(function(order) { %>
 
-<% } else { %>
+      <tr>
+        <td>
+          <%= order._id %>
+        </td>
+        <td>
+          <%= order.costumerName %>
+        </td>
+        <td>
+          <img
+            class="imageSize"
+            src="/costum-orders/<%= order.productImage %>"
+            alt=""
+          />
+        </td>
+        <td>
+          <% let d = 'Ordered on ' + generateDate(order.date, 'MMM Do YYYY') %>
+          <%= d %>
+        </td>
+        <td>
+          <a
+            class="confirmDeletion badge badge-success p-2"
+            href="/admin/costum-orders/delete/<%= order.id %>"
+            >Done</a
+          >
+        </td>
+      </tr>
 
-  <h3 class=text-center>There are no orders</h3>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <% } else { %>
+
+  <h3 class="text-center">There are no orders</h3>
 
   <% } %>
+</div>
 
 <%- include('../_layouts/adminFooter') %>

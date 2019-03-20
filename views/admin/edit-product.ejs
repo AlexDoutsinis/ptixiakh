@@ -1,4 +1,5 @@
 <%- include('../_layouts/adminHeader') %>
+<div class="container">
   <h2 class="page-title mt-4">Edit product</h2>
   <a href="/admin/products" class="btn btn-dark mt-4 mb-4">Back to all products</a>
   <form action="/admin/products/edit-product/<%= id %>?_method=put" method="post" enctype="multipart/form-data">
@@ -96,6 +97,7 @@
       <input type="submit" value="Upload">
     </div>
   </form>
+</div>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/basic.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css">

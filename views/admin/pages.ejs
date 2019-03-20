@@ -1,9 +1,11 @@
 <%- include('../_layouts/adminHeader') %>
+<div class="container">
   <h2 class="page-title mt-4">Mini Pages</h2>
-  <a href="/admin/pages/add-page" class="btn btn-dark mt-4 mb-3">Add a new mini page</a>
+  <a href="/admin/pages/add-page" class="btn btn-dark mt-4 mb-3"
+    >Add a new mini page</a
+  >
 
   <table class="table table-hover sorting mt-4">
-
     <thead>
       <tr class="home">
         <th>Title</th>
@@ -13,40 +15,48 @@
     </thead>
     <tbody>
       <% pages.forEach(function(page) { %>
-        <tr id="id_<%= page._id %>" class="<%= page.slug %>">
-          <td>
-            <%= page.title %>
-          </td>
-          <td>
-            <a class="badge badge-primary p-2" href="/admin/pages/edit-page/<%= page._id %>">Edit</a>
-          </td>
-          
-              <td>
-                <a class="confirmDeletion badge badge-warning p-2" href="/admin/pages/delete-page/<%= page._id %>">Delete</a>
-              </td>
-              
-        </tr>
-        <% }); %>
+      <tr id="id_<%= page._id %>" class="<%= page.slug %>">
+        <td>
+          <%= page.title %>
+        </td>
+        <td>
+          <a
+            class="badge badge-primary p-2"
+            href="/admin/pages/edit-page/<%= page._id %>"
+            >Edit</a
+          >
+        </td>
+
+        <td>
+          <a
+            class="confirmDeletion badge badge-warning p-2"
+            href="/admin/pages/delete-page/<%= page._id %>"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      <% }); %>
     </tbody>
   </table>
+</div>
 
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-    crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"
+></script>
 
-  <script>
-    $('tbody').sortable({
-      items: "tr:not('.home')",
-      placeholder: 'ui-state-highlight', /* css class */
-      update: function () {
-        let ids = $('tbody').sortable('serialize');
-        let url = '/admin/pages/reorder-pages';
+<script>
+  $("tbody").sortable({
+    items: "tr:not('.home')",
+    placeholder: "ui-state-highlight" /* css class */,
+    update: function() {
+      let ids = $("tbody").sortable("serialize");
+      let url = "/admin/pages/reorder-pages";
 
-        $.post(url, ids); // send post req
-      }
-    })
+      $.post(url, ids); // send post req
+    }
+  });
+</script>
 
-
-
-  </script>
-
-  <%- include('../_layouts/adminFooter') %>
+<%- include('../_layouts/adminFooter') %>

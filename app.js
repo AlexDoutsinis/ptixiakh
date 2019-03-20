@@ -103,6 +103,7 @@ app.use("/", (req, res, next) => {
   app.locals.content = null;
   app.locals.body = null;
   app.locals.noMatch = null;
+  app.locals.display = false;
   // app.locals.errorImg = req.session.errors;
 
   app.locals.generateDate = function(date, format) {
@@ -164,11 +165,13 @@ const adminProducts = require("./routes/admin-products.js");
 const adminBlogPosts = require("./routes/admin-blog-posts.js");
 const adminCostumOrders = require("./routes/admin-costum-orders");
 const adminNewsLetter = require("./routes/admin-news-letter");
+const adminFeedback = require("./routes/admin-feedback.js");
 const products = require("./routes/products.js");
 const blog = require("./routes/blog.js");
 const cart = require("./routes/cart.js");
 const users = require("./routes/users.js");
 const contact = require("./routes/contact.js");
+const feedback = require("./routes/feedback.js");
 const popularProducts = require("./routes/popular-products");
 const sortByPrice = require("./routes/sortByPrice");
 
@@ -182,11 +185,13 @@ app.use("/admin/products", adminProducts);
 app.use("/admin/blog-posts", adminBlogPosts);
 app.use("/admin/costum-orders", adminCostumOrders);
 app.use("/admin/news-letter", adminNewsLetter);
+app.use("/admin/feedback", adminFeedback);
 app.use("/products", products);
 app.use("/blog", blog);
 app.use("/cart", cart);
 app.use("/users", users);
 app.use("/contact", contact);
+app.use("/feedback", feedback);
 app.use("/popular-products", popularProducts);
 app.use("/sort", sortByPrice);
 

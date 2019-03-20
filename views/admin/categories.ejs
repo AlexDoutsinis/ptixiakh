@@ -1,9 +1,11 @@
 <%- include('../_layouts/adminHeader') %>
+<div class="container">
   <h2 class="page-title mt-4">Categories</h2>
-  <a href="/admin/categories/add-category" class="btn btn-dark mt-4 mb-3">Add a new category</a>
+  <a href="/admin/categories/add-category" class="btn btn-dark mt-4 mb-3"
+    >Add a new category</a
+  >
 
   <table class="table table-hover mt-4">
-
     <thead>
       <tr>
         <th>Category</th>
@@ -13,22 +15,34 @@
     </thead>
     <tbody>
       <% categories.forEach(function(category) { %>
-        <tr>
-          <td>
-            <%= category.title %>
-          </td>
-          <td>
-            <a class="badge badge-primary p-2" href="/admin/categories/edit-category/<%= category._id %>">Edit</a>
-          </td>
-              <td>
-                <a class="confirmDeletion badge badge-warning p-2" href="/admin/categories/delete-category/<%= category._id %>">Delete</a>
-              </td>
-        </tr>
-        <% } ); %>
+      <tr>
+        <td>
+          <%= category.title %>
+        </td>
+        <td>
+          <a
+            class="badge badge-primary p-2"
+            href="/admin/categories/edit-category/<%= category._id %>"
+            >Edit</a
+          >
+        </td>
+        <td>
+          <a
+            class="confirmDeletion badge badge-warning p-2"
+            href="/admin/categories/delete-category/<%= category._id %>"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      <% } ); %>
     </tbody>
   </table>
+</div>
 
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-    crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"
+></script>
 
-  <%- include('../_layouts/adminFooter') %>
+<%- include('../_layouts/adminFooter') %>
