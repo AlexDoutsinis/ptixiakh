@@ -5,37 +5,10 @@ const router = express.Router();
 const NewsLetter = require("../models/news-letter");
 const Feedback = require("../models/feedback");
 
-router.get("/", (req, res) => {
-  res.render("home");
-});
+router.get("/", async (req, res) => {
+  const reviews = (await Feedback.find({ approved: true })) || null;
 
-//! this route is at wrong place
-router.post("/feedback", async (req, res) => {
-  const { name, body } = req.body;
-
-  req.checkBody("name", "Name is required").notEmpty();
-  req.checkBody("body", "Please leave a feedback").notEmpty();
-
-  const errors = req.validationErrors();
-
-  if (errors)
-    return res.render("home", {
-      errors,
-      feedback: null
-    });
-
-  const review = new Feedback({
-    name,
-    body
-  });
-
-  try {
-    await review.save();
-    req.flash("success", "Thanks for your feedback");
-    res.redirect("back");
-  } catch (err) {
-    console.log(err);
-  }
+  res.render("home", { reviews });
 });
 
 router.post("/news-letter", async (req, res) => {

@@ -1,0 +1,54 @@
+<%- include('../_layouts/adminHeader') %>
+
+<br />
+
+<div class="container">
+  <h1 class="mb-3"><%= title %></h1>
+  <br />
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Message</th>
+        <th>Approve</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <% let date = review.date %> <%= generateDate(date, 'MMM Do YYYY') %>
+        </td>
+        <td>
+          <%= review.body %>
+        </td>
+        <td>
+          <% if(review.approved) { %>
+          <p>Review approved</p>
+          <% } else { %>
+          <a
+            class="btn btn-info"
+            href="/admin/feedback/approve/<%= review.id %>"
+            >Approve</a
+          >
+          <% } %>
+        </td>
+        <td>
+          <a
+            class="btn btn-danger"
+            href="/admin/feedback/delete/<%= review.id %>"
+            >Delete</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br />
+
+  <a class="btn btn-dark" href="/admin/feedback">Back to reviews</a>
+</div>
+
+<%- include('../_layouts/adminFooter') %>

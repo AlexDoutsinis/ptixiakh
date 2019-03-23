@@ -3,7 +3,7 @@
 <br />
 
 <div class="container">
-  <h1 class="mb-3">Reviews</h1>
+  <h1 class="mb-3"><%= title %></h1>
   <br />
 
   <table class="table table-bordered">
@@ -11,8 +11,7 @@
       <tr>
         <th>Name</th>
         <th>Date</th>
-        <th>Approve</th>
-        <th>Delete</th>
+        <th>Body</th>
       </tr>
     </thead>
 
@@ -28,19 +27,9 @@
           <% let date = review.date %> <%= generateDate(date, 'MMM Do YYYY') %>
         </td>
         <td>
-          <a
-            href="/admin/blog-posts/approve/<%= review.id %>"
-            class="btn btn-info"
-            >Approve</a
+          <a href="/admin/feedback/<%= review.id %>" class="btn btn-info"
+            >More info</a
           >
-        </td>
-        <td>
-          <form
-            action="/admin/feedback/delete/<%= review.id %>?_method=delete"
-            method="post"
-          >
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
         </td>
       </tr>
 

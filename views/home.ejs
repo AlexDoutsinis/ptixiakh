@@ -141,9 +141,16 @@
 </section>
 
 <section>
-  <div class="container">
-    <h1>Feedback</h1>
-    <p>lorem ipsum</p>
+  <div class="d-flex flex-column">
+    <h1 class="d-flex justify-content-center mb-4 p-5 bg-dark text-white">
+      Feedback
+    </h1>
+    <div class="container">
+      <% reviews.forEach(review => { %>
+      <h2 class="d-flex justify-content-center">"<%= review.name %>"</h2>
+      <p class="d-flex justify-content-center"><%= review.body %></p>
+      <% }) %>
+    </div>
   </div>
 </section>
 

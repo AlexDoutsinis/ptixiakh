@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // blog post shcema
 BlogPostSchema = new mongoose.Schema({
-
   title: {
     type: String,
     required: true
@@ -20,13 +19,12 @@ BlogPostSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now()
-  },
-
-  faker: {
-    type: String,
-    default: 'NO'
   }
 
+  // faker: {
+  //   type: String,
+  //   default: 'NO'
+  // }
 });
 
-const blogPost = module.exports = mongoose.model('blogpost', BlogPostSchema);
+const blogPost = (module.exports = mongoose.model("blogpost", BlogPostSchema));
