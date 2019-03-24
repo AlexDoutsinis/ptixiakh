@@ -209,3 +209,7 @@ footer#main-footer {
 a.nav-link {
   font-size: 15px !important;
 }
+
+.noPadding {
+  padding: 0 !important;
+}

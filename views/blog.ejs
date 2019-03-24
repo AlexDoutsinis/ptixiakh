@@ -1,66 +1,78 @@
-<% include  _layouts/blogHeader %>
+<% include _layouts/blogHeader %>
 
-      <!-- --- NEW DESIGN --- -->
-      <div class="row">
-      
-      <div class="col-md-12 mb-4 bg-light mt-4">
-        <div class="col-md-8 m-5">
-        <h1 class="my-4 display-4">Everything You Need To Know About 3D Printing</h1>
-        </div>
+<!-- --- NEW DESIGN --- -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mb-4 bg-light mt-4 noPadding">
+      <div class="col-md-8 mt-5 mb-5 noPadding">
+        <h1 class="my-4 display-4">
+          Everything You Need To Know About 3D Printing
+        </h1>
+      </div>
 
-       <!-- --- Search form --- -->
-        <div class="col-md-4 m-5">
-          <div class="card my-4">
+      <!-- --- Search form --- -->
+      <div class="col-md-4 mb-5 mt-5 noPadding">
+        <div class="card my-4">
           <form action="/blog" method="get">
             <h5 class="card-header">Blog Search</h5>
             <div class="card-body">
               <div class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="Search for..."/>
+                <input
+                  type="text"
+                  name="search"
+                  class="form-control"
+                  placeholder="Search for..."
+                />
                 <span class="input-group-btn">
-                  <button class="btn btn-dark" type="submit" value="Search">Go!</button>
+                  <button class="btn btn-dark" type="submit" value="Search">
+                    Go!
+                  </button>
                 </span>
               </div>
             </div>
-            </form>
-          </div>
-          </div>
-
+          </form>
         </div>
+      </div>
+    </div>
 
-        <% if (noMatch) { %>
-          <h3 class="m-4"><%= noMatch %></h3>
-        <% } %>
+    <% if (noMatch) { %>
+    <h3 class="m-4"><%= noMatch %></h3>
+    <% } %>
 
-        <!-- BLOG -->
-        <% posts.forEach(function(post) { %>
+    <!-- BLOG -->
+    <% posts.forEach(function(post) { %>
 
-          <div class="card mr-4 mt-4 mb-4 col-md-3">
-            <img class="card-img-top img-responsive" src="/blog-posts-images/<%= post.image %>" alt="Card image cap">
-            <div class="card-body">
-              <h2 class="card-title"><%= post.title %></h2>
-              <p class="card-text"><% let val = post.body.split(' ') %> 
-                <% if (val.length >= 10) { %>
-                  <% const res1 = val.splice(0, 10).join(' ') + '...'%>
-                  <%= res1.replace(/<[^>]+>/g, '') %>
-                <% } else { %>
-                <% const res2 = val.splice(0, 10).join(' ')%>
-                <%= res2.replace(/<[^>]+>/g, '') %>
-                <% } %>
-              </p>
-              <a href="blog/post/<%= post.id %>" class="btn btn-dark">Read More &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-            <% let d = 'Posted on ' + generateDate(post.date, 'MMM Do YYYY') %>
-              <%= d %>
-            </div>
-        </div>
+    <div class="card mr-4 mt-4 mb-4 col-md-4">
+      <img
+        class="card-img-top img-responsive"
+        src="/blog-posts-images/<%= post.image %>"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h2 class="card-title"><%= post.title %></h2>
+        <p class="card-text">
+          <% let val = post.body.split(' ') %> <% if (val.length >= 10) { %> <%
+          const res1 = val.splice(0, 10).join(' ') + '...'%> <%=
+          res1.replace(/<[^>]+>/g, '') %> <% } else { %> <% const res2 =
+          val.splice(0, 10).join(' ')%> <%= res2.replace(/<[^>]+>/g, '') %> <% }
+          %>
+        </p>
+        <a href="blog/post/<%= post.id %>" class="btn btn-dark"
+          >Read More &rarr;</a
+        >
+      </div>
+      <div class="card-footer text-muted">
+        <% let d = 'Posted on ' + generateDate(post.date, 'MMM Do YYYY') %> <%=
+        d %>
+      </div>
+    </div>
 
-        <% }) %>
+    <% }) %>
 
-        <br/>
+    <br />
+  </div>
+</div>
 
-        </div>
-        
-      <!-- --- NEW DESIGN --- -->
+<!-- --- NEW DESIGN --- -->
 
-<% include  _layouts/footer %>
+<% include _layouts/footer %>

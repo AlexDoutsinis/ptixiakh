@@ -17,8 +17,13 @@ router.get("/", isAdmin, async (req, res) => {
 router.get("/:id", async (req, res) => {
   const review = await Feedback.findById(req.params.id);
 
+  const name =
+    review.name[review.name.length - 1] === "s"
+      ? review.name.substring(0, review.name.length - 1)
+      : review.name;
+
   res.render("admin/review", {
-    title: `${review.name}'s review`,
+    title: `${name}'s review`,
     review
   });
 });
