@@ -150,18 +150,25 @@ router.get("/:category/:product", (req, res) => {
   Product.findOne({ slug: req.params.product })
     .then(product => {
       let galleryDir = "public/product-images/" + product._id + "/gallery";
-
-      fs.readdir(galleryDir).then(files => {
+			
+		fs.ensureDir(galleryDir)
+			.then(() => {
+				fs.readdir(galleryDir).then(files => {
         galleryImages = files;
 
         res.render("product", {
-          title: product.title,
+          title: "Details",
           product: product,
           galleryImages: galleryImages,
           loggedIn: loggedIn,
           availability: product.availability
         });
       });
+			})
+			.catch(err => {
+				console.error(err);
+			});
+			
     })
     .catch(err => {
       console.log(err);
