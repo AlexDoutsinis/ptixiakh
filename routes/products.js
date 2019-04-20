@@ -150,25 +150,24 @@ router.get("/:category/:product", (req, res) => {
   Product.findOne({ slug: req.params.product })
     .then(product => {
       let galleryDir = "public/product-images/" + product._id + "/gallery";
-			
-		fs.ensureDir(galleryDir)
-			.then(() => {
-				fs.readdir(galleryDir).then(files => {
-        galleryImages = files;
 
-        res.render("product", {
-          title: "Details",
-          product: product,
-          galleryImages: galleryImages,
-          loggedIn: loggedIn,
-          availability: product.availability
+      fs.ensureDir(galleryDir)
+        .then(() => {
+          fs.readdir(galleryDir).then(files => {
+            galleryImages = files;
+
+            res.render("product", {
+              title: "Details",
+              product: product,
+              galleryImages: galleryImages,
+              loggedIn: loggedIn,
+              availability: product.availability
+            });
+          });
+        })
+        .catch(err => {
+          console.error(err);
         });
-      });
-			})
-			.catch(err => {
-				console.error(err);
-			});
-			
     })
     .catch(err => {
       console.log(err);
@@ -181,6 +180,7 @@ router.post("/costum-orders", (req, res) => {
     typeof req.files.image !== "undefined" ? req.files.image.name : "";
 
   let name = req.user.name;
+  let email = req.user.email;
 
   req.checkBody("image", "You must upload an image file").isImage(imageFile);
 
@@ -199,7 +199,8 @@ router.post("/costum-orders", (req, res) => {
 
     let order = new CostumOrder({
       productImage: imageFile,
-      costumerName: name
+      costumerName: name,
+      costumerEmail: email
     });
 
     order

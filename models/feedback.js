@@ -6,6 +6,11 @@ const FeedbackSchema = new mongoose.Schema({
     required: true
   },
 
+  email: {
+    type: String,
+    required: true
+  },
+
   body: {
     type: String,
     required: true

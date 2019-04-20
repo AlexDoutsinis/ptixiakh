@@ -8,9 +8,10 @@ router.get("/review", (req, res) => {
 });
 
 router.post("/review", async (req, res) => {
-  const { name, body } = req.body;
+  const { name, body, email } = req.body;
 
   req.checkBody("name", "Name is required").notEmpty();
+  req.checkBody("email", "Email is required").notEmpty();
   req.checkBody("body", "Please leave a feedback").notEmpty();
 
   const errors = req.validationErrors();
@@ -24,6 +25,7 @@ router.post("/review", async (req, res) => {
 
   const feedback = new Feedback({
     name,
+    email,
     body
   });
 

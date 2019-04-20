@@ -10,6 +10,7 @@
     <thead>
       <tr>
         <th>Date</th>
+        <th>Email</th>
         <th>Message</th>
         <th>Status</th>
         <th>Delete</th>
@@ -20,6 +21,9 @@
       <tr>
         <td>
           <% let date = review.date %> <%= generateDate(date, 'MMM Do YYYY') %>
+        </td>
+        <td>
+          <%= review.email %>
         </td>
         <td>
           <%= review.body %>
