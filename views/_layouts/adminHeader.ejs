@@ -27,11 +27,11 @@
         <button
           class="navbar-toggler"
           data-toggle="collapse"
-          data-target="#navNavbar"
+          data-target="#navBar"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navBar">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link" href="/admin/pages">Mini Pages</a>
@@ -67,9 +67,7 @@
     <div class="container">
       <%- messages('messages', locals) %> <% if (errors) { %> <%
       console.log('errors'); %> <% errors.forEach(function(error) { %>
-      <div class="alert alert-danger">
-        <%= error.msg %>
-      </div>
+      <div class="alert alert-danger"><%= error.msg %></div>
 
       <% }); %> <% } %>
     </div>

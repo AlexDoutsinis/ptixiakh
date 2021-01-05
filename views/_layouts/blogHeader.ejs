@@ -5,9 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>
-      <%= title %>
-    </title>
+    <title><%= title %></title>
 
     <link
       rel="stylesheet"
@@ -29,15 +27,17 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-white">
       <div class="navbar-nav">
-        <a class="navbar-brand" href="/"><img width="70px" src="/images/logo_size.png"/></a>
+        <a class="navbar-brand" href="/"
+          ><img width="70px" src="/images/logo_size.png"
+        /></a>
         <button
           class="navbar-toggler"
           data-toggle="collapse"
-          data-target="#navNavbar"
+          data-target="#navBar"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navBar">
           <ul class="navbar-nav ml-auto">
             <% pages.forEach(function(page) { %>
             <li class="nav-item">
@@ -103,8 +103,9 @@
     <div class="container">
       <%- messages('messages', locals) %> <% if (errors) { %> <%
       console.log('errors'); %> <% errors.forEach(function(error) { %>
-      <div class="alert alert-danger">
-        <%= error.msg %>
-      </div>
+      <div class="alert alert-danger"><%= error.msg %></div>
 
       <% }); %> <% } %>
+    </div>
+  </body>
+</html>
