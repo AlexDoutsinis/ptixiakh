@@ -1,59 +1,85 @@
-<% include  _layouts/shopHeader %>
+<% include _layouts/shopHeader %>
+<div class="container">
   <div class="row">
     <div class="card mb-4 mt-4">
-    
       <form action="/products" method="get">
-      <h5 class="card-header">Product Search</h5>
+        <h5 class="card-header">Product Search</h5>
         <div class="card-body">
           <div class="input-group">
-            <input type="text" name="search" class="form-control" placeholder="Search for..."/>
-              <span class="input-group-btn">
-                <button class="btn btn-dark" type="submit" value="Search">Go!</button>
-              </span>
+            <input
+              type="text"
+              name="search"
+              class="form-control"
+              placeholder="Search for..."
+            />
+            <span class="input-group-btn">
+              <button class="btn btn-dark" type="submit" value="Search">
+                Go!
+              </button>
+            </span>
           </div>
         </div>
-        </form>
-        
+      </form>
     </div>
-    <div class="card mb-4 mt-4 ml-5">
+    <div class="md pl-5"></div>
+    <div class="card mb-4 mt-4">
       <h5 class="card-header">Sort products by price</h5>
       <div class="card-body">
         <a href="/sort/highest" class="btn btn-dark">Ascending</a>
         <a href="/sort/lowest" class="btn btn-dark">Descending</a>
       </div>
-      </div>
+    </div>
   </div>
 
   <div class="row products">
-
     <% if (noMatch) { %>
 
-      <h3 class="m-4"><%= noMatch %></h3>
+    <h3 class="m-4"><%= noMatch %></h3>
 
-    <% } %>
+    <% } %> <% products.forEach(function(product) { %>
 
-    <% products.forEach(function(product) { %>
-    
     <div class="col-12 col-md-6 col-lg-4">
-    <div class="card mt-4">
-        <a href="/products/<%= product.category %>/<%= product.slug %>" class="pa">
-          <img class="productImage" src="/product-images/<%= product.id %>/<%= product.image %>" alt=""/>
+      <div class="card mt-4">
+        <a
+          href="/products/<%= product.category %>/<%= product.slug %>"
+          class="pa"
+        >
+          <img
+            class="productImage"
+            src="/product-images/<%= product.id %>/<%= product.image %>"
+            alt=""
+          />
         </a>
         <div class="card-body">
-            <h4 class="card-title"><a href="/products/<%= product.category %>/<%= product.slug %>" class="vd"><%= product.title %></a></h4>
-            <div class="row">
-                <div class="mt-2">
-                    <p class="btn btn-primary btn-block" style="cursor: default">€
-                    <%= parseFloat(product.price).toFixed(2) %></p>
-                </div>
-                <div class="mt-2 ml-4">
-                  <a class="btn btn-dark btn-block" href="/products/<%= product.category %>/<%= product.slug %>" class="vd">Details</a>
-                </div>
+          <h4 class="card-title">
+            <a
+              href="/products/<%= product.category %>/<%= product.slug %>"
+              class="vd"
+              ><%= product.title %></a
+            >
+          </h4>
+          <div class="row">
+            <div class="mt-2">
+              <p class="btn btn-primary btn-block" style="cursor: default">
+                € <%= parseFloat(product.price).toFixed(2) %>
+              </p>
             </div>
+            <div class="mt-2 ml-4">
+              <a
+                class="btn btn-dark btn-block"
+                href="/products/<%= product.category %>/<%= product.slug %>"
+                class="vd"
+                >Details</a
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-      <% } ) %>
+    <% } ) %>
   </div>
-  <% include  _layouts/footer %>
+</div>
+<% include _layouts/footer %>
+</body>
+</html>

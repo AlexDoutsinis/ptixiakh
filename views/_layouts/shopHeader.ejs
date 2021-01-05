@@ -1,182 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title><%= title %></title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-      crossorigin="anonymous"
-    />
+  <title>
+    <%= title %>
+  </title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css"
-    />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  </head>
+  <link rel="stylesheet" href="/css/style.css">
 
-  <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-white">
-      <div class="navbar-nav">
-        <a class="navbar-brand" href="/"
-          ><img width="70px" src="/images/logo_size.png"
-        /></a>
-        <button
-          class="navbar-toggler"
-          data-toggle="collapse"
-          data-target="#navBar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navBar">
-          <ul class="navbar-nav ml-auto">
-            <% pages.forEach(function(page) { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/nav/<%= page.slug %>">
-                <%= page.title %>
-              </a>
-            </li>
-            <% } )%>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
 
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/products">Shop</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/blog">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/feedback/review">Feedback</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/cart/checkout"
-                >My cart( <% if (typeof cart !== 'undefined') { %> <%=
-                cart.length %> <% } else { %> empty <% } %> )
-              </a>
-            </li>
+<body>
 
-            <% if (user) { %>
-
-            <li class="nav-item">
-              <a class="nav-link">Welcome <%= user.name %> </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/logout">Logout</a>
-            </li>
-
-            <% } else { %>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/users/register">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/login">Log in</a>
-            </li>
-
-            <% } %> <% if (user && user.admin == 1) { %>
-
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/pages">Dashboard</a>
-            </li>
-
-            <% } %>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <div class="hero"><h2>Shop</h2></div>
-    <div class="container">
-      <%- messages('messages', locals) %> <% if (errors) { %> // <%
-      console.log('errors'); %> <% errors.forEach(function(error) { %>
-      <div class="alert alert-danger"><%= error.msg %></div>
-
-      <% }); %> <% } %>
-
-      <div class="row">
-        <div class="col-xs-12 col-md-3">
-          <h3 class="mb-4 mt-4">Categories</h3>
-          <div class="card bg-light mb-3">
-            <div class="card-header bg-primary text-white text-uppercase">
-              <i class="fas fa-list"></i>
-            </div>
-            <ul class="list-group category_block">
-              <li class="list-group-item">
-                <a href="/products">All products</a>
-              </li>
-              <% categories.forEach(function(cat) { %>
-              <li class="list-group-item">
-                <a href="/products/<%= cat.slug %>?currentCat=<%= cat.slug %>">
-                  <%= cat.title %>
+<nav class="navbar navbar-expand-md navbar-light bg-white">
+<div class="navbar-nav">
+    <a class="navbar-brand" href="/"><img width="70px" src="/images/logo_size.png"></a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navBar"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navBar">
+      <ul class="navbar-nav ml-auto">
+        <% pages.forEach(function(page) { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/nav/<%= page.slug %>">
+                  <%= page.title %>
                 </a>
-              </li>
-              <% } ) %>
-              <li class="list-group-item">
-                <a href="/popular-products">Popular Products</a>
-              </li>
-            </ul>
-          </div>
+                </li>
+                    <% } )%>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/products">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/feedback/review">Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/contact">Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/cart/checkout">My cart(
+                      <% if (typeof cart !== 'undefined') { %>
+                        <%= cart.length %>
+                          <% } else { %>
+                            empty
+                            <% } %>
+                              )
+                    </a>
+                    </li>
+                    
+                    
+                      <% if (user) { %>
+                      <li class="nav-item">
+                        <a class="nav-link">Welcome
+                            <%= user.name %>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/users/logout">Logout</a>
+                      </li>
+                        
+                        <% } else { %>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/users/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/users/login">Log in</a>
+                        </li>
+                          <% } %>
 
-          <% if (user && user.admin == 0) { %>
+                            <% if (user && user.admin == 1) { %>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/admin/pages">Dashboard</a>
+                            </li>
+                              <% } %>
 
-          <h5 style="line-height: 30px" class="pt-2 pr-3 pb-4">
-            Upload the item <br />
-            you want to print
-          </h5>
 
-          <form
-            action="/products/costum-orders"
-            method="post"
-            enctype="multipart/form-data"
-          >
-            <div class="form-group">
-              <input
-                placeholder="Image"
-                type="file"
-                class="form-control-file"
-                name="image"
-                id="img"
-              />
-            </div>
-
-            <button class="btn btn-light mt-3">Submit</button>
-          </form>
-
-          <% } else if (user && user.admin == 1) { %>
-
-          <p>An admin don't need to order anything :P</p>
-
-          <% } else { %>
-
-          <p class="alert alert-info">Log in to order custom item</p>
-
-          <% } %>
-        </div>
-
-        <div class="col-xs-12 col-md-1"></div>
-
-        <div class="col-xs-12 col-md-8"></div>
-      </div>
+      </ul>
     </div>
-  </body>
-</html>
+    </div>
+  </nav>
+
+  <div class="hero"><h2>Shop</h2></div>
+  <div class="container">
+
+    <%- messages('messages', locals) %>
+
+      <% if (errors) { %>
+        // <% console.log('errors'); %>
+          <% errors.forEach(function(error) { %>
+            <div class="alert alert-danger">
+              <%= error.msg %>
+            </div>
+            <% }); %>
+              <%  } %>
+
+                <div class="row">
+
+                  <div class="col-xs-12 col-md-3">
+                  <h3 class="mb-4 mt-4">Categories</h3>
+                    <div class="card bg-light mb-3">
+                      <div class="card-header bg-primary text-white text-uppercase"><i class="fas fa-list"></i></div>
+                      <ul class="list-group category_block">
+                        <li class="list-group-item"><a href="/products">All products</a></li>
+                        <% categories.forEach(function(cat) { %>
+                          <li class="list-group-item">
+                            <a href="/products/<%= cat.slug %>?currentCat=<%= cat.slug %>">
+                              <%= cat.title %>
+                            </a>
+                          </li>
+                        <% } ) %>
+                        <li class="list-group-item">
+                          <a href="/popular-products">Popular Products</a>
+                        </li>
+                      </ul>
+                      
+
+                      
+
+                    </div>
+
+                    <% if (user && user.admin == 0) { %>
+                      <h5 style="line-height: 30px;" class="pt-2 pr-3 pb-4">Upload the item
+                        <br/> you want to print</h5>
+                      <form action="/products/costum-orders" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                          <input placeholder="Image" type="file" class="form-control-file" name="image" id="img"/>
+                        </div>
+                        <button class="btn btn-light mt-3">Submit</button>
+                      </form>
+                      <% } else if (user && user.admin == 1) { %>
+                        <p>An admin don't need to order anything :P</p>
+                      <% } else { %>
+                        <p class="alert alert-info">Log in to order custom item</p>
+                        <% } %>
+                    
+                    
+                      
+                      
+                  </div>
+                  <div class="col-xs-12 col-md-1">
+                  </div>
+                  <div class="col-xs-12 col-md-8">
