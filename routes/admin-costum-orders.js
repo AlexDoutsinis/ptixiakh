@@ -35,7 +35,8 @@ router.get('/delete/:id', isAdmin, (req, res) => {
   CostumOrder.findOne({ _id: req.params.id }).then(order => {
     let fileName = order.productImage;
 
-    let path = `public/costum-orders/${fileName}`
+    // HERE
+    let path = `/public/custom-orders/${fileName}`
 
     fs.remove(path, () => {
       CostumOrder.findByIdAndRemove(req.params.id).then(result => {

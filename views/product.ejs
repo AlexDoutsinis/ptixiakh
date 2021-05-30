@@ -1,16 +1,17 @@
 <% include  _layouts/header %>
+<div class="container">
+
+
   <div class="row">
-    <h1 class="page-header mt-3">
+    <h1 class="page-header mt-3 mb-5">
       <%= product.title %>
     </h1>
 
   </div>
-  <hr>
-  <br>
 
+  <p><b>Image source:</b> /product-images/<%= product.id %>/<%= product.image %></p>
   <div class="row">
-
-    <div class="col-xs-12 col-md-5">
+    <div class="col-xs-12 col-md-5" style="padding: 0; padding-right: 20px;">
       <img class="spi" src="/product-images/<%= product.id %>/<%= product.image %>" alt="">
       <br>
     </div>
@@ -74,4 +75,5 @@
     </div>
   </div>
   </div>
+</div>
   <% include  _layouts/footer %>

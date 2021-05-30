@@ -64,7 +64,7 @@ router.post("/add-product", (req, res) => {
   let availability = req.body.availability;
   let quantity = req.body.quantity;
 
-  console.log(req.files.image.name);
+  //console.log(req.files.image.name);
   let imageFile =
     typeof req.files.image !== "undefined" ? req.files.image.name : ""; // exoume prosvash sto req.files eksetias toy file upload module. to image einai to name tou input opou mpenei h eikona sti forma mas sto ejs
 
@@ -72,7 +72,7 @@ router.post("/add-product", (req, res) => {
   req.checkBody("quantity", "quantity is required").notEmpty();
   req.checkBody("description", "Description is required").notEmpty();
   req.checkBody("price", "Price is required").isDecimal();
-  req.checkBody("image", "You must upload an image file").isImage(imageFile); // costum validator
+  req.checkBody("image", "You must upload an image file").isImage(imageFile); // custom validator
 
   let errors = req.validationErrors();
 
@@ -146,8 +146,9 @@ router.post("/add-product", (req, res) => {
             if (imageFile !== "") {
               // !edw kati pezei
               let productImage = req.files.image;
+              // HERE
               let path =
-                "public/product-images/" + product._id + "/" + imageFile;
+                "/public/product-images/" + product._id + "/" + imageFile;
 
               productImage.mv(path, function(err) {
                 return console.log(err);
