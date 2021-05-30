@@ -17,6 +17,7 @@ const app = express()
 
 // connect to mongo
 mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.set('useFindAndModify', false);
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function () {
@@ -198,5 +199,5 @@ app.use('/sort', sortByPrice)
 // start the server
 const port = process.env.PORT || 3000
 app.listen(port, () => {
-  console.log(`Server started on port ${port}`)
+  console.log(`Server started on http://localhost:${port}`)
 })
