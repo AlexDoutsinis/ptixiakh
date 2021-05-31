@@ -149,7 +149,7 @@ router.post("/add-product", (req, res) => {
               let productImage = req.files.image;
               // HERE
               let path =
-                "/public/product-images/" + product._id + "/" + imageFile;
+              root + "/public/product-images/" + product._id + "/" + imageFile;
               console.log(`Image Path: ${path}`);
               console.log(`Current Directory Path: ${__dirname}`);
               console.log(`Root Path: ${root}`);
@@ -273,7 +273,7 @@ router.put("/edit-product/:id", (req, res) => {
                 }
 
                 productImage = req.files.image;
-                let path = "public/product-images/" + id + "/" + imageFile;
+                let path = root + "public/product-images/" + id + "/" + imageFile;
 
                 productImage.mv(path, function(err) {
                   return console.log(err);
@@ -299,7 +299,7 @@ router.post("/product-gallery/:id", (req, res) => {
 
   let id = req.params.id;
 
-  let path = "public/product-images/" + id + "/gallery/" + productImage.name;
+  let path = root + "public/product-images/" + id + "/gallery/" + productImage.name;
   let thumbsPath =
     "public/product-images/" + id + "/gallery/thumbs/" + productImage.name;
 
@@ -337,7 +337,7 @@ router.get("/delete-image/:image", isAdmin, (req, res) => {
 // get req delete product
 router.get("/delete-product/:id", isAdmin, (req, res) => {
   let id = req.params.id;
-  let path = "public/product-images/" + id;
+  let path = root + "public/product-images/" + id;
 
   fs.remove(path, () => {
     Product.findByIdAndRemove(id).then(() => {
