@@ -150,7 +150,7 @@ router.post("/add-product", (req, res) => {
               let path =
                 "/public/product-images/" + product._id + "/" + imageFile;
               console.log(`Image Path: ${path}`);
-              console.log(`Current Directory Path: ${path.dirname(__dirname)}`)
+              console.log(`Current Directory Path: ${__dirname}`);
 
               productImage.mv(path, function(err) {
                 console.log("Image Error");
