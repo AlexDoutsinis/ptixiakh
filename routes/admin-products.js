@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+var root = require("../helpers/root");
 
 const { body, validationResult } = require("express-validator/check");
 const { sanitizeBody } = require("express-validator/filter");
@@ -151,6 +152,7 @@ router.post("/add-product", (req, res) => {
                 "/public/product-images/" + product._id + "/" + imageFile;
               console.log(`Image Path: ${path}`);
               console.log(`Current Directory Path: ${__dirname}`);
+              console.log(`Root Path: ${root}`);
 
               productImage.mv(path, function(err) {
                 console.log("Image Error");
