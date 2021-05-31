@@ -149,8 +149,8 @@ router.post("/add-product", (req, res) => {
               // HERE
               let path =
                 "/public/product-images/" + product._id + "/" + imageFile;
-              console.log(`HERE1: ${path}`);
-              console.log(`HERE2: ${JSON.stringify(productImage)}`);
+              console.log(`Image Path: ${path}`);
+              console.log(`Current Directory Path: ${path.dirname(__dirname)}`)
 
               productImage.mv(path, function(err) {
                 console.log("Image Error");
