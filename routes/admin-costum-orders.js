@@ -12,21 +12,14 @@ const CostumOrder = require('../models/costum-order');
 // get req to show orders in wating
 router.get('/', isAdmin, (req, res) => {
 
-  let count;
-
   CostumOrder.count().then(c => {
-    count = c;
+    CostumOrder.find({}).then(orders => {
+      res.render('admin/costum-orders', {
+        count: c,
+        orders: orders
+      });
+    })
   })
-
-  CostumOrder.find({}).then(orders => {
-
-    res.render('admin/costum-orders', {
-      count: count,
-      orders: orders
-    });
-
-  })
-
 })
 
 // get req to delete an order

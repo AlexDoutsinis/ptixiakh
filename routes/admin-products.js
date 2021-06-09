@@ -18,18 +18,24 @@ const Category = require("../models/category");
 
 // get req products index
 router.get("/", isAdmin, (req, res) => {
-  let count;
+  //let count;
 
   Product.count().then(c => {
-    count = c;
-  });
-
-  Product.find({}).then(products => {
-    res.render("admin/products", {
-      products: products,
-      count: count
+    //count = c;
+    Product.find({}).then(products => {
+      res.render("admin/products", {
+        products: products,
+        count: c
+      });
     });
   });
+
+  // Product.find({}).then(products => {
+  //   res.render("admin/products", {
+  //     products: products,
+  //     count: count
+  //   });
+  // });
 });
 
 // get req add product
@@ -273,8 +279,9 @@ router.put("/edit-product/:id", (req, res) => {
                 }
 
                 productImage = req.files.image;
-                let path = root + "public/product-images/" + id + "/" + imageFile;
-
+                let path = root + "/public/product-images/" + id + "/" + imageFile;
+                //let path = root + "/public/product-images/" + product._id + "/" + imageFile; EEE
+              
                 productImage.mv(path, function(err) {
                   return console.log(err);
                 });
@@ -299,7 +306,7 @@ router.post("/product-gallery/:id", (req, res) => {
 
   let id = req.params.id;
 
-  let path = root + "public/product-images/" + id + "/gallery/" + productImage.name;
+  let path = root + "/public/product-images/" + id + "/gallery/" + productImage.name;
   let thumbsPath =
     "public/product-images/" + id + "/gallery/thumbs/" + productImage.name;
 
@@ -337,7 +344,7 @@ router.get("/delete-image/:image", isAdmin, (req, res) => {
 // get req delete product
 router.get("/delete-product/:id", isAdmin, (req, res) => {
   let id = req.params.id;
-  let path = root + "public/product-images/" + id;
+  let path = root + "/public/product-images/" + id;
 
   fs.remove(path, () => {
     Product.findByIdAndRemove(id).then(() => {
