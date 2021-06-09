@@ -40,7 +40,6 @@ router.get('/delete/:id', isAdmin, (req, res) => {
       })
     })
   })
-
 })
 
 // exports
