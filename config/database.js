@@ -8,5 +8,6 @@ module.exports = {
   //   "mongodb://ptixiakh-user:ptixiakh123a@ds151383.mlab.com:51383/ptixiakh"
 
   database:
-    'mongodb+srv://Alex123:alex123@cluster0.bhwtm.mongodb.net/3dlads?retryWrites=true&w=majority',
+  "mongodb+srv://Alex123:alex123@cluster0.bhwtm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 }
+
