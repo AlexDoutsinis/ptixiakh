@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// page shcema
+// page schema
 PageSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -23,3 +23,6 @@ PageSchema = new mongoose.Schema({
 });
 
 const page = module.exports = mongoose.model('page', PageSchema);
+
+
+

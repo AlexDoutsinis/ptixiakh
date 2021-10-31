@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// blog post shcema
+// blog post schema
 BlogPostSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -20,11 +20,6 @@ BlogPostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now()
   }
-
-  // faker: {
-  //   type: String,
-  //   default: 'NO'
-  // }
 });
 
 const blogPost = (module.exports = mongoose.model("blogpost", BlogPostSchema));

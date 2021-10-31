@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// costum orders shcema
+// custom orders schema
 CostumOrderSchema = new mongoose.Schema({
   productImage: {
     type: String,

@@ -53,7 +53,7 @@ router.post('/register', (req, res) => {
             email: email,
             username: username,
             password: password,
-            admin: 0,
+            admin: 1,
           })
 
           bcrypt

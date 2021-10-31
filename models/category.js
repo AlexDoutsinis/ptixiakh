@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// category shcema
+// category schema
 CategorySchema = new mongoose.Schema({
   title: {
     type: String,

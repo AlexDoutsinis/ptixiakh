@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 router.post("/news-letter", async (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
-
+  
   req.checkBody("name", "Name is required").notEmpty();
   req.checkBody("email", "Email is required").notEmpty();
 
@@ -27,8 +27,8 @@ router.post("/news-letter", async (req, res) => {
     });
 
   let user = new NewsLetter({
-    name: req.body.name,
-    email: req.body.email
+      name: req.body.name,
+      email: req.body.email
   });
 
   user
